@@ -17,7 +17,7 @@ public class ScaleController : MonoBehaviour
 
     public void CheckScaleCondition()
     {
-        if(_platformCollideCount >= 2)
+        if(_platformCollideCount >= 2 && !SpawnManager.instance.CheckListLength())
         {
             if (_startWinCondition == null) _startWinCondition = StartCoroutine(StartWinCountdown());
         }
@@ -48,15 +48,15 @@ public class ScaleController : MonoBehaviour
 
     private IEnumerator StartWinCountdown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _winTextCountdown.text = 1.ToString();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _winTextCountdown.text = 2.ToString();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _winTextCountdown.text = 3.ToString();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _winTextCountdown.text = 4.ToString();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         _winTextCountdown.text = 5.ToString();
         yield return new WaitForSeconds(.5f);
         _winScreen.SetActive(true);

@@ -10,19 +10,19 @@ public class DeadZone : MonoBehaviour
         _failScreen.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.CompareTag("PlayObject"))
+        if (collision.CompareTag("PlayObject"))
         {
             Debug.Log("You Lose");
-            Destroy(other);
+            Destroy(collision);
             StartCoroutine(LoseGame());
         }
     }
 
     private IEnumerator LoseGame()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.5f);
         _failScreen.SetActive(true);
     }
 }
