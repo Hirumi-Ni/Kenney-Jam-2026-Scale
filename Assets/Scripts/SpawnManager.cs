@@ -24,11 +24,12 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         if (_spawnedBlock == null) return;
 
         MoveSpawnedBlock();
 
-        if (Mouse.current.leftButton.wasPressedThisFrame) DropSpawnedBlock();
+        if (Mouse.current.leftButton.wasReleasedThisFrame) DropSpawnedBlock();
     }
 
     public bool CheckListLength()
@@ -39,6 +40,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnBlock()
     {
+        if (_spawnedBlock != null) return;
         if (!CheckListLength()) return;
 
         GameObject _instantiatedBlock = Instantiate(blockPrefabList[0], _spawnTransformPos, Quaternion.identity);

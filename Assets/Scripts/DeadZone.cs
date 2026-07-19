@@ -24,5 +24,6 @@ public class DeadZone : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         _failScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
